@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Coding Quiz</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card col-xs-12 col-md-5 mt-5 pt-2 container text-center" id="timer">
+                <h5 class="card-title p-3">Seconds Remaining: 75</h5>
+                <!-- <p class="card-text"></p> -->
+            </div>
+            <div class="jumbotron jumbotron-fluid w-100 mt-5 border rounded border-info">
+                
+                
+                <div id="start" class="col-sm-12 container text-center">
+                    <h1 class="" id="title">Start Quiz</h1>
+                    <button type="button" class="btn btn-secondary mt-5" id="start-button">Start</button>
+                </div>
+                <div id="quiz-questions"></div>
+                <div id="finished"></div>
+            </div>
+        </div>
+    </div>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="./questions.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+</html>
