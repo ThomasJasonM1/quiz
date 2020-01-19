@@ -3,11 +3,52 @@ li:hover {
 }
 
 li {
-    width: 50%;
+    margin-right: 10em;
+    margin-left: 7em;
+}
+
+#correct {
+    color: green;
+}
+
+#incorrect {
+    color: red;
+}
+
+.results {
+    margin-top: -1em !important;
+}
+
+#finished {
+    display: none;
+    margin-top: -1em !important;
+    margin-bottom: -1em !important;
 }
 
 @media (max-width: 767px) {
     ol li {
-        width: 92%;
+        /* width: 92%; */
+        margin-right: 2em;
+        margin-left: 0em;
+    } 
+}
+
+@media (max-width: 575px) {
+    .results {
+        margin-top: 0em !important;
+        margin-bottom: 0em !important;
+    }
+
+    #finished {
+        margin-top: 0em !important;
+        margin-bottom: 0em !important;
+    }
+}
+
+@media (min-width: 992px) {
+    ol li {
+        /* width: 92%; */
+        margin-right: 19em;
+        margin-left: 16em;
     } 
 }

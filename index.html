@@ -12,9 +12,13 @@
     <div class="container">
         <div class="row">
             <div class="card col-xs-12 col-md-5 mt-5 pt-2 container text-center" id="timer">
-                <h5 class="card-title p-3">Seconds Remaining: 75</h5>
-                <!-- <p class="card-text"></p> -->
+                <h5 class="card-title p-3">Seconds Remaining:</h5>
+                <h5 class="card-title pb-3" id="seconds">75</h5>
             </div>
+            <div class="card col-xs-12 col-md-5 mt-5 pt-2 container text-center" id="runnung-score">
+                    <h5 class="card-title p-3" id="correct">Correct: 0</h5>
+                    <h5 class="card-title pb-3" id="incorrect">Incorrect: 0</h5>
+                </div>
             <div class="jumbotron jumbotron-fluid w-100 mt-5 border rounded border-info">
                 
                 
@@ -23,7 +27,27 @@
                     <button type="button" class="btn btn-secondary mt-5" id="start-button">Start</button>
                 </div>
                 <div id="quiz-questions"></div>
-                <div id="finished"></div>
+                <div id="finished" class="container">
+                    <h1 class="text-center results">Results</h1>
+                    <div class="card col-xs-12 col-md-5 mt-3 p-2 container text-center" id="score">
+                        <h5 class="card-title p-3"></h5>
+                    </div>
+                    <div class="card col-xs-12 col-md-5 p-2 container text-center" id="time-bonus">
+                        <h5 class="card-title p-3"></h5>
+                    </div>
+                    <div class="card col-xs-12 col-md-5 p-2 container text-center" id="total">
+                        <h5 class="card-title p-3"></h5>
+                    </div>
+                    <form>
+                        <div class="form-group mt-5 row text-center">
+                            <div class="col-sm-4"></div>
+                            <label for="initials" class="col-sm-2 col-form-label"><strong>Initials:</strong></label>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="initinals" placeholder="i.e. JT">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>  

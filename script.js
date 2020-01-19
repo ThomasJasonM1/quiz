@@ -45,10 +45,14 @@ const getQuestion = () => {
         option.on('mouseenter', (e) => {
             e.target.classList.remove('list-group-item-info');
             e.target.classList.add('list-group-item-primary');
+            e.target.children[0].classList.remove('badge-light');
+            e.target.children[0].classList.add('badge-primary');
         })
         option.on('mouseleave', (e) => {
             e.target.classList.remove('list-group-item-primary');
             e.target.classList.add('list-group-item-info');
+            e.target.children[0].classList.add('badge-light');
+            e.target.children[0].classList.remove('badge-primary');
             
         })
 
@@ -58,8 +62,10 @@ const getQuestion = () => {
             let answer = questions[question].answer;
             if (selected === answer) {
                 correctAnswers++;
+                $('#correct').text('Correct: ' + correctAnswers);
             } else {
                 wrongAnswers++; 
+                $('#incorrect').text('Incorrect: ' + wrongAnswers);
                 x -= 10;
             }
             console.log(`correctAnswers: ${correctAnswers}, wrongAnswers: ${wrongAnswers}`);
@@ -75,6 +81,12 @@ const finished = () => {
     console.log('here');
     $('#quiz-questions').empty();
     clearInterval(timer);
+
+    let timeBonus = Math.round(x * .1)
+    $('#score').text('Correct Answers: ' + correctAnswers);
+    $('#time-bonus').text('Time Bonus: +' + timeBonus);
+    $('#total').text('Total: ' + (correctAnswers + timeBonus));
+    $('#finished').show();
 }
 
 // This has to be declared in an outer scope, or I cannot turn it off from a different function
@@ -88,7 +100,7 @@ const startTimer = () => {
             // **** TODO call sore card function
         } else {
             x--;
-            $('.card-title').text('Seconds Remaining: ' + x);
+            $('#seconds').text(x);
         }
         
     }, 1000);
