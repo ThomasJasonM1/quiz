@@ -1,0 +1,13 @@
+li:hover {
+    cursor:pointer;
+}
+
+li {
+    width: 50%;
+}
+
+@media (max-width: 767px) {
+    ol li {
+        width: 92%;
+    } 
+}
