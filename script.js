@@ -2,6 +2,7 @@ let x = 75;
 let question = 0;
 let correctAnswers = 0;
 let wrongAnswers = 0;
+let leaderboardArray = [];
 
 const getQuestion = () => {
     if (question >= questions.length) {
@@ -87,6 +88,68 @@ const finished = () => {
     $('#time-bonus').text('Time Bonus: +' + timeBonus);
     $('#total').text('Total: ' + (correctAnswers + timeBonus));
     $('#finished').show();
+
+    $('#initinals').on('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            leaderboardArray = JSON.parse(localStorage.getItem('players')) || [];
+            console.log(leaderboardArray);
+            let currentPlayer = {
+                initials: e.target.value,
+                score: (correctAnswers + timeBonus),
+            }
+            
+            leaderboardArray.push(currentPlayer);
+            localStorage.setItem('players', JSON.stringify(leaderboardArray));
+
+            e.target.value = '';
+            showLeaderboard();
+        }
+    })
+}
+
+// Shows the list of leaders and gives the player another option to replay the game
+const showLeaderboard = () => {
+    console.log('object');
+    $('#finished').hide();
+    $('#leaderboard').show();
+    let leaderList = $('#leader-list');
+    let currentHigh = 0;
+
+    leaderboardArray.map(leader => {
+        if (parseInt(leader.score) > currentHigh) currentHigh = leader.score;
+        let leaderItem = $('<li>');
+        leaderItem.attr('class', 'list-group-item d-flex justify-content-between align-items-center list-group-item-info');
+        leaderItem.text(leader.initials + ': ' + leader.score);
+        if (currentHigh === leader.score) {
+            leaderList.prepend(leaderItem);
+        } else {
+            leaderList.append(leaderItem);
+        }
+    })
+
+    let tryAgain = $('<button>');
+    tryAgain.text('Try Again');
+    tryAgain.attr('class', 'btn btn-secondary');
+    tryAgain.attr('id', 'try-again-button');
+    $('#try-again').append(tryAgain);
+
+    $('#try-again-button').on('click', () => {
+        x = 75;
+        question = 0;
+        correctAnswers = 0;
+        wrongAnswers = 0;
+        leaderboardArray = [];
+
+        $('#leaderboard').hide();
+        $('#correct').text('Correct: 0');
+        $('#incorrect').text('Incorrect: 0');
+        $('#seconds').text('75');
+        $('#leader-list').empty();
+        $('#initinals').unbind();
+        $('#try-again-button').remove();
+        $('#start').show();
+    })
 }
 
 // This has to be declared in an outer scope, or I cannot turn it off from a different function
